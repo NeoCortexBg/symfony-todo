@@ -12,4 +12,3 @@ php app/console doctrine:generate:entities AppBundle
 php app/console doctrine:schema:update --force  
 php app/console doctrine:migrations:migrate  
 rm -rf app/cache/  
-  
