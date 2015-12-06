@@ -1,0 +1,23 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block bodyClass %}login{% endblock %}
+
+{% block body %}
+
+
+{{ form_start(form, {'attr': {'class': 'form-signin'}}) }}
+	<h1 class="form-signin-heading">Register</h1>
+	{{ form_errors(form) }}
+	{{ form_errors(form.email) }}
+	{{ form_errors(form.password) }}
+
+	{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+	{{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+	{{ form_widget(form.confirm_password, {'attr': {'class': 'form-control'}}) }}
+	{{ form_widget(form.register, {'attr': {'class': 'btn btn-lg btn-primary btn-block'}}) }}
+	<p></p>
+	<p class='text-center'>or</p>
+	<a href='{{ path('login') }}' class="btn btn-lg btn-default btn-block">Login</a>
+{{ form_end(form) }}
+
+{% endblock %}

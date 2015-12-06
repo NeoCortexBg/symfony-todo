@@ -1,0 +1,53 @@
+
+{% if todo %}
+	{% set form = todo.form %}
+	{% set status = "status-" ~ todo.todoStatus.name %}
+	{% set saveButton = "primary" %}
+	{% set saveButtonLabel = "Save" %}
+{% else %}
+	{% set saveButton = "success" %}
+	{% set saveButtonLabel = "Add" %}
+{% endif %}
+
+{% set formView = form.createView() %}
+
+
+<div class="todo {{status}}">
+
+	{{ form_start(formView, {'action': app.request.uri}) }}
+		<div class="left col-lg-1">
+	        {{ form_widget(formView.todo_sid) }}
+
+			<div class="date-created">
+				<label>
+					<span class="date"></span>
+				</label>
+			</div>
+			<div class="priority">
+				<label>
+					<span class="label-name">Priority</span>
+					{{ form_widget(formView.priority) }}
+				</label>
+			</div>
+			<div class="project">
+				<label>
+					<span class="label-name">Project</span>
+					{{ form_widget(formView.project) }}
+				</label>
+			</div>
+			<div class="status">
+				<label>
+					<span class="label-name">Status</span>
+					{{ form_widget(formView.todo_status) }}
+				</label>
+			</div>
+			<div class="submit">
+				{{ form_widget(formView.save, {'attr': {'class': 'btn btn-sm btn-block btn-' ~ saveButton}, 'label': saveButtonLabel, 'value': saveButtonLabel}) }}
+			</div>
+		</div>
+		<div class="right col-lg-11">
+			{{ form_widget(formView.text, {'attr': {'cols': "50", 'rows': "5"}}) }}
+		</div>
+	{{ form_end(formView) }}
+	<div class="cleared"></div>
+</div>

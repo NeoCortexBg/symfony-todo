@@ -1,0 +1,13 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block body %}
+
+	{% include 'todo/filter-form.html.twig' with {'form':filterForm} %}
+
+	{% include 'todo/todo-form.html.twig' with {'form':form} %}
+
+	{% for t in todos %}
+		{% include 'todo/todo-form.html.twig' with {'todo': t} %}
+	{% endfor %}
+
+{% endblock %}

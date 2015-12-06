@@ -1,0 +1,38 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    app.twig_extension:
+        class: AppBundle\Twig\DumpExtension
+        public: false
+        arguments:  [@service_container]
+#        arguments:
+#            - @service_container
+        tags:
+            - { name: twig.extension }
+
+    app.form.type.todo:
+        class: AppBundle\Form\Type\TodoType
+        tags:
+            - { name: form.type, alias: todo }
+
+    app.form.type.filter:
+        class: AppBundle\Form\Type\FilterType
+        tags:
+            - { name: form.type, alias: filter }
+
+    app.form.type.login:
+        class: AppBundle\Form\Type\LoginType
+        tags:
+            - { name: form.type, alias: login }
+
+    app.form.type.register:
+        class: AppBundle\Form\Type\RegisterType
+        tags:
+            - { name: form.type, alias: register }

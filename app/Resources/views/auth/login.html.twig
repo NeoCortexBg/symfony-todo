@@ -1,0 +1,26 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block bodyClass %}login{% endblock %}
+
+{% block body %}
+
+{% if error %}
+    <div class='alert alert-danger'>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+{{ form_start(form, {'attr': {'class': 'form-signin'}, 'action': path('login_check')}) }}
+	<h1 class="form-signin-heading">Login</h1>
+
+	<input type="text" class="form-control" placeholder="Email address" required="required" name="_username" value='{{ form.vars.value.email }}'/>
+
+	<input type="password" class="form-control" placeholder="Password" required="required" name="_password"/>
+
+	{{ form_widget(form.login, {'attr': {'class': 'btn btn-lg btn-primary btn-block'}}) }}
+	<p></p>
+	<p class='text-center'>or</p>
+	<a href='{{ path('register') }}' class="btn btn-lg btn-default btn-block">Register</a>
+
+</form>
+
+
+{% endblock %}
