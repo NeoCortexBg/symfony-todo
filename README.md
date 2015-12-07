@@ -1,6 +1,10 @@
 # symfony-todo
 
 Checkout.  
+
+Run:  
+composer update  
+  
 Edit file app/config/parameters.yml to set correct db information and secret.  
 You do not need to have the dabase already created.   
   
